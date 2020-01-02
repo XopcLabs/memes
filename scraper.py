@@ -341,7 +341,7 @@ if __name__ == '__main__':
                         controller.signal(Signal.NEWNYM)
                         # Wait until new tor-connection is established
                         time.sleep(controller.get_newnym_wait())
-                        print('Chaged IP to:', check_ip())
+                        print('Changed IP to:', check_ip())
                         # Creating a header with new user-agent
                         header = {'User-Agent':str(ua.chrome)}
                 for n, link in enumerate(links):
