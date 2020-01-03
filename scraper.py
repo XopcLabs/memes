@@ -11,6 +11,8 @@ import requests
 from bs4 import BeautifulSoup
 # DataFrames
 import pandas as pd
+# Datetime
+from datetime import datetime
 # Directory checking/creating
 import os
 # Command line arguments
@@ -235,6 +237,7 @@ def get_data(link):
     data.update(get_text(soup))
     # Adding pic link
     data['picture'] = get_pic_link(soup)
+    data['scraped_at'] = datetime.now()
 
     return data
 
@@ -305,9 +308,7 @@ if __name__ == '__main__':
                 f.write(str(page))
 
     # Creating desired dataframe
-    df = pd.DataFrame(columns=['name', 'category', 'status','year', 'added', 'updated',
-                           'views', 'videos', 'photos', 'comments', 'tags', 'type',
-                          'about', 'history', 'other'])
+    df = pd.DataFrame(columns=['name', 'category', 'status','year',             'added','updated', 'views', 'videos', 'photos', 'comments', 'tags', 'type', 'about', 'history', 'other', 'origin', 'picture', 'scraped_at'])
 
     skipped_pages = []
     skipped_links = []
